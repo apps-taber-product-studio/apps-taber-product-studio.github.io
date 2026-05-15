@@ -5,36 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Taber Product Studio</title>
   <style>
-    body { font-family: system-ui; max-width: 700px; margin: 80px auto; line-height: 1.6; padding: 0 20px; color: #1a1a1a; }
-    h1 { font-size: 28px; margin-bottom: 4px; }
-    h2 { font-size: 20px; margin-top: 48px; margin-bottom: 8px; }
-    .tag { font-size: 13px; color: #666; margin-bottom: 40px; }
-    .app { border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
-    .app h3 { margin: 0 0 6px 0; font-size: 18px; }
-    .app p { margin: 0 0 12px 0; color: #444; font-size: 15px; }
-    .badge { display: inline-block; font-size: 12px; background: #f0f0f0; border-radius: 20px; padding: 3px 10px; color: #666; }
-    .coming-soon { background: #f5f0ff; color: #6b21a8; }
-    a { color: #6b21a8; }
-    footer { margin-top: 60px; font-size: 13px; color: #999; border-top: 1px solid #e5e5e5; padding-top: 20px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #0f0a1e;
+      --bg2:     #1a1035;
+      --card:    rgba(255,255,255,0.06);
+      --border:  rgba(255,255,255,0.1);
+      --text:    #ffffff;
+      --text2:   rgba(255,255,255,0.6);
+      --text3:   rgba(255,255,255,0.35);
+      --accent:  #c084fc;
+      --green:   #34d399;
+      --radius:  16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #2D1B69 0%, #0f0a1e 100%);
+      min-height: 100vh;
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      max-width: 900px; margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.05em; color: var(--accent); }
+    .nav-email { font-size: 13px; color: var(--text2); }
+    .nav-email a:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .hero p { font-size: 18px; color: var(--text2); line-height: 1.6; max-width: 520px; }
+
+    /* ── Grid ── */
+    .grid {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 24px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .app-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .app-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(192,132,252,0.4);
+      transform: translateY(-2px);
+    }
+    .app-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--bg2), rgba(192,132,252,0.3));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .app-name { font-size: 17px; font-weight: 700; }
+    .app-desc { font-size: 13px; color: var(--text2); line-height: 1.5; flex: 1; }
+    .app-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(192,132,252,0.15); color: var(--accent);
+      border: 1px solid rgba(192,132,252,0.3);
+      width: fit-content;
+    }
+    .app-badge.live {
+      background: rgba(52,211,153,0.15); color: var(--green);
+      border-color: rgba(52,211,153,0.3);
+    }
+    .app-arrow {
+      font-size: 18px; color: var(--text3);
+      align-self: flex-end; transition: color 0.2s;
+    }
+    .app-card:hover .app-arrow { color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: 13px; color: var(--text3);
+      border-top: 1px solid var(--border);
+    }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
-  <h1>Taber Product Studio</h1>
-  <p class="tag">We build mobile applications and digital tools.</p>
-  <h2>Our Apps</h2>
-  <div class="app">
-    <h3>BorderRate</h3>
-    <p>Stop losing money every time you get paid. BorderRate helps freelancers and remote workers convert invoices at the right time, with the right provider — and keep more of what they earn.</p>
-    <p>Live rate signals · Provider comparison · Smart alerts · Hidden fee exposure</p>
-    <span class="badge coming-soon">Coming soon to App Store</span>
-  </div>
-  <div class="app">
-    <h3>More apps coming soon</h3>
-    <p>We're actively building tools for productivity, travel, and finance.</p>
-    <span class="badge">In development</span>
-  </div>
-  <footer>
-    Taber Product Studio LLC · <a href="mailto:apps@taberproductstudio.com">apps@taberproductstudio.com</a>
-  </footer>
+
+<nav>
+  <span class="nav-logo">TABER PRODUCT STUDIO</span>
+  <span class="nav-email"><a href="mailto:apps@taberproductstudio.com">apps@taberproductstudio.com</a></span>
+</nav>
+
+<section class="hero">
+  <h1>We build tools<br/>people actually use.</h1>
+  <p>Mobile applications and digital tools for finance, productivity, travel, and everyday life.</p>
+</section>
+
+<div class="grid">
+
+  <a href="/borderrate" class="app-card">
+    <div class="app-icon">💱</div>
+    <div class="app-name">BorderRate</div>
+    <div class="app-desc">Stop losing money every time you get paid. Live rate signals, provider comparison, and smart alerts for freelancers who earn in one currency and live in another.</div>
+    <span class="app-badge">Coming to App Store</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/tripsync" class="app-card">
+    <div class="app-icon">✈️</div>
+    <div class="app-name">TripSync</div>
+    <div class="app-desc">A group planner for weighted decision making. Plan trips and make group decisions together — without the back and forth.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/dbt" class="app-card">
+    <div class="app-icon">🧠</div>
+    <div class="app-name">DBT Pocket Guide</div>
+    <div class="app-desc">Your dialectical behaviour therapy companion. Skills, exercises, and support in your pocket.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/budget" class="app-card">
+    <div class="app-icon">💰</div>
+    <div class="app-name">Budget</div>
+    <div class="app-desc">Coming soon.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/fontmaker" class="app-card">
+    <div class="app-icon">✏️</div>
+    <div class="app-name">FontMaker</div>
+    <div class="app-desc">Upload a PNG of your handwriting or lettering and turn it into a custom font automatically.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/decide" class="app-card">
+    <div class="app-icon">⚖️</div>
+    <div class="app-name">Decide</div>
+    <div class="app-desc">Coming soon.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+  <a href="/housing" class="app-card">
+    <div class="app-icon">🏠</div>
+    <div class="app-name">Housing</div>
+    <div class="app-desc">Coming soon.</div>
+    <span class="app-badge">Coming soon</span>
+    <span class="app-arrow">→</span>
+  </a>
+
+</div>
+
+<footer>
+  © 2026 Taber Product Studio LLC ·
+  <a href="mailto:apps@taberproductstudio.com">apps@taberproductstudio.com</a>
+</footer>
+
 </body>
 </html>

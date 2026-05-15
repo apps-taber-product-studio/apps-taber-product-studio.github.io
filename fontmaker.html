@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fontmaker — Taber Product Studio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #2D1B69 0%, #0f0a1e 100%);
+      min-height: 100vh; color: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    nav { max-width: 760px; margin: 0 auto; padding: 28px 24px 0; display: flex; justify-content: space-between; align-items: center; }
+    .back { font-size: 14px; font-weight: 600; color: #c084fc; }
+    .back:hover { opacity: 0.8; }
+    .nav-logo { font-size: 13px; color: rgba(255,255,255,0.35); }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 60px 24px 100px; }
+    .app-icon { font-size: 52px; margin-bottom: 20px; }
+    h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .tagline { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 500px; margin-bottom: 24px; }
+    .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: rgba(192,132,252,0.15); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+    .cta { margin-top: 60px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; text-align: center; }
+    .cta h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+    .cta p { font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 24px; line-height: 1.6; }
+    .cta-btn { display: inline-block; background: linear-gradient(135deg, #7C3AED, #C084FC); color: white; font-size: 14px; font-weight: 800; padding: 14px 28px; border-radius: 12px; }
+    .cta-btn:hover { opacity: 0.9; }
+    footer { text-align: center; padding: 32px 24px; font-size: 13px; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(255,255,255,0.1); }
+    footer a:hover { color: #c084fc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="back">← All apps</a>
+  <span class="nav-logo">TABER PRODUCT STUDIO</span>
+</nav>
+<div class="wrap">
+  <div style="font-size:52px;margin-bottom:20px">✏️</div>
+  <h1>FontMaker</h1>
+  <p class="tagline">Upload a PNG of your handwriting and turn it into a custom font. Currently in development. Join the waitlist to be notified when it launches.</p>
+  <span class="badge">In development</span>
+  <div class="cta">
+    <h2>Stay in the loop</h2>
+    <p>We'll let you know when this app is ready.</p>
+    <a href="mailto:apps@taberproductstudio.com?subject=Waitlist" class="cta-btn">Join the waitlist →</a>
+  </div>
+</div>
+<footer>
+  © 2026 Taber Product Studio LLC ·
+  <a href="mailto:apps@taberproductstudio.com">apps@taberproductstudio.com</a> ·
+  <a href="/">All apps</a>
+</footer>
+</body>
+</html>

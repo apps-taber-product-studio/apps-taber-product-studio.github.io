@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BorderRate — Taber Product Studio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #0f0a1e;
+      --card:    rgba(255,255,255,0.06);
+      --border:  rgba(255,255,255,0.1);
+      --text:    #ffffff;
+      --text2:   rgba(255,255,255,0.6);
+      --text3:   rgba(255,255,255,0.35);
+      --accent:  #c084fc;
+      --green:   #34d399;
+      --red:     #f87171;
+      --amber:   #fbbf24;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #2D1B69 0%, #0f0a1e 100%);
+      min-height: 100vh; color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      max-width: 760px; margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .back { font-size: 14px; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+    .back:hover { opacity: 0.8; }
+    .nav-logo { font-size: 13px; color: var(--text3); }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 100px; }
+
+    /* ── Hero ── */
+    .hero { padding: 60px 0 48px; border-bottom: 1px solid var(--border); margin-bottom: 48px; }
+    .app-icon { font-size: 52px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .hero .tagline { font-size: 18px; color: var(--text2); line-height: 1.6; max-width: 500px; margin-bottom: 24px; }
+    .badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+      background: rgba(192,132,252,0.15); color: var(--accent);
+      border: 1px solid rgba(192,132,252,0.3);
+    }
+    .badge.green { background: rgba(52,211,153,0.15); color: var(--green); border-color: rgba(52,211,153,0.3); }
+
+    /* ── Features ── */
+    .section-title { font-size: 11px; font-weight: 700; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 56px; }
+    .feature {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px;
+    }
+    .feature-icon { font-size: 24px; margin-bottom: 10px; }
+    .feature h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+    /* ── Who it's for ── */
+    .personas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 56px; }
+    .persona {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .persona-icon { font-size: 22px; flex-shrink: 0; }
+    .persona p { font-size: 13px; color: var(--text2); line-height: 1.4; }
+    .persona p strong { color: var(--text); font-weight: 700; }
+
+    /* ── Providers ── */
+    .providers { display: flex; flex-direction: column; gap: 10px; margin-bottom: 56px; }
+    .provider {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px 18px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .provider-left { display: flex; align-items: center; gap: 12px; }
+    .provider-name { font-size: 14px; font-weight: 700; }
+    .provider-tag { font-size: 11px; color: var(--text3); margin-top: 2px; }
+    .provider-link {
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      background: rgba(192,132,252,0.12); border: 1px solid rgba(192,132,252,0.25);
+      border-radius: 8px; padding: 6px 14px;
+      transition: background 0.15s;
+    }
+    .provider-link:hover { background: rgba(192,132,252,0.22); }
+
+    /* ── CTA ── */
+    .cta {
+      background: linear-gradient(135deg, rgba(192,132,252,0.18), rgba(99,51,200,0.12));
+      border: 1px solid rgba(192,132,252,0.3);
+      border-radius: 20px; padding: 40px;
+      text-align: center; margin-bottom: 48px;
+    }
+    .cta h2 { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+    .cta p { font-size: 14px; color: var(--text2); margin-bottom: 24px; line-height: 1.6; }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #7C3AED, #C084FC);
+      color: white; font-size: 14px; font-weight: 800;
+      padding: 14px 28px; border-radius: 12px;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* ── Disclosure ── */
+    .disclosure {
+      font-size: 11px; color: var(--text3); line-height: 1.6;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px; margin-bottom: 40px;
+    }
+
+    footer { text-align: center; padding: 32px 24px; font-size: 13px; color: var(--text3); border-top: 1px solid var(--border); }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="back">← All apps</a>
+  <span class="nav-logo">TABER PRODUCT STUDIO</span>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="app-icon">💱</div>
+    <h1>BorderRate</h1>
+    <p class="tagline">Stop losing money every time you get paid. Know when to convert, where to send, and how much you're actually keeping.</p>
+    <div class="badges">
+      <span class="badge">Coming to App Store</span>
+      <span class="badge">iOS · Android</span>
+      <span class="badge green">Live rate data</span>
+    </div>
+  </div>
+
+  <p class="section-title">What it does</p>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3>Live rate signals</h3>
+      <p>Know instantly whether today is a good, average, or poor time to convert your invoice — with a clear meter and plain-language verdict.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💱</div>
+      <h3>Provider comparison</h3>
+      <p>See exactly how much Wise, Revolut, Remitly, and your bank will give you — side by side, including hidden FX markups.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔔</div>
+      <h3>Smart alerts</h3>
+      <p>Set a target rate and get notified the moment it hits. Never miss a good conversion window again.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌍</div>
+      <h3>Shopping abroad</h3>
+      <p>See what any foreign price really costs in your currency, and which payment method saves you the most.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🐷</div>
+      <h3>Savings tracker</h3>
+      <p>Every conversion logged and compared to the monthly average. See exactly how much better timing is worth.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📈</div>
+      <h3>Trend signals</h3>
+      <p>See whether a rate is trending up or down this week — not just whether today is good, but whether tomorrow will be better.</p>
+    </div>
+  </div>
+
+  <p class="section-title">Built for</p>
+  <div class="personas">
+    <div class="persona">
+      <div class="persona-icon">👨‍💻</div>
+      <p><strong>Software developers & designers</strong> billing clients in USD or EUR while living somewhere else.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-icon">🎨</div>
+      <p><strong>Content creators & copywriters</strong> with monthly retainers or per-project invoices in a foreign currency.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-icon">🌍</div>
+      <p><strong>Digital nomads</strong> living across multiple countries and converting money every month.</p>
+    </div>
+    <div class="persona">
+      <div class="persona-icon">🏠</div>
+      <p><strong>Remote employees</strong> whose salary lands in USD but whose life is in CAD, EUR, or MXN.</p>
+    </div>
+  </div>
+
+  <p class="section-title">Compare providers</p>
+  <div class="disclosure">
+    Some providers below are affiliate partners. Partnerships never affect rankings or recommendations — providers are always sorted by how much money actually arrives.
+  </div>
+  <div class="providers">
+    <div class="provider">
+      <div class="provider-left">
+        <div>
+          <div class="provider-name">Wise</div>
+          <div class="provider-tag">Mid-market rate · transparent fees</div>
+        </div>
+      </div>
+      <a href="https://wise.com" class="provider-link" target="_blank" rel="noopener">Send with Wise →</a>
+    </div>
+    <div class="provider">
+      <div class="provider-left">
+        <div>
+          <div class="provider-name">Revolut</div>
+          <div class="provider-tag">Hold multiple currencies · great for nomads</div>
+        </div>
+      </div>
+      <a href="https://revolut.com" class="provider-link" target="_blank" rel="noopener">Send with Revolut →</a>
+    </div>
+    <div class="provider">
+      <div class="provider-left">
+        <div>
+          <div class="provider-name">Remitly</div>
+          <div class="provider-tag">No flat fee · popular with freelancers</div>
+        </div>
+      </div>
+      <a href="https://remitly.com" class="provider-link" target="_blank" rel="noopener">Send with Remitly →</a>
+    </div>
+    <div class="provider">
+      <div class="provider-left">
+        <div>
+          <div class="provider-name">Payoneer</div>
+          <div class="provider-tag">Built for freelancers and contractors</div>
+        </div>
+      </div>
+      <a href="https://payoneer.com" class="provider-link" target="_blank" rel="noopener">Send with Payoneer →</a>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Coming soon to the App Store</h2>
+    <p>BorderRate is currently in development. Join the waitlist to be notified when it launches.</p>
+    <a href="mailto:apps@taberproductstudio.com?subject=BorderRate waitlist" class="cta-btn">Join the waitlist →</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Taber Product Studio LLC ·
+  <a href="mailto:apps@taberproductstudio.com">apps@taberproductstudio.com</a> ·
+  <a href="/">All apps</a>
+</footer>
+
+</body>
+</html>
